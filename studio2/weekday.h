@@ -13,8 +13,24 @@ enum class Weekday{
     Sat,
 };
 
+Weekday operator--(Weekday &day, int);
 Weekday operator++(Weekday &day, int);
 ostream &operator<<(ostream &os, const Weekday &day);
+
+Weekday operator--(Weekday &day, int) {
+    Weekday tmp = day;
+    switch(day) {
+        case Weekday::Sun: day = Weekday::Sat; break;
+        case Weekday::Mon: day = Weekday::Sun; break;
+        case Weekday::Tue: day = Weekday::Mon; break;
+        case Weekday::Wed: day = Weekday::Tue; break;
+        case Weekday::Thu: day = Weekday::Wed; break;
+        case Weekday::Fri: day = Weekday::Thu; break;
+        case Weekday::Sat: day = Weekday::Fri; break;
+    }
+
+    return tmp;
+}
 
 Weekday operator++(Weekday &day, int) {
     Weekday tmp = day;

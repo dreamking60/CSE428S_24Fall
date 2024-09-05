@@ -10,7 +10,7 @@ CMPL_SRCS	= studio2.cpp
 TMPL_SRCS	= 
 
 #               Header (.h) files
-HEADER_FILES    = weekday.h
+HEADER_FILES    = weekday.h pressure.h
 
 #               Any special flags that should be set for compilation
 SPECIAL_FLAGS  = -std=c++17 -DTEMPLATE_HEADERS_INCLUDE_SOURCE

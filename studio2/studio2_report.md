@@ -96,3 +96,127 @@ Sunday
 Monday
 ```
 
+## test3
+
+```cpp
+// in weekday.h
+Weekday operator--(Weekday &day, int);
+
+Weekday operator--(Weekday &day, int) {
+    Weekday tmp = day;
+    switch(day) {
+        case Weekday::Sun: day = Weekday::Sat; break;
+        case Weekday::Mon: day = Weekday::Sun; break;
+        case Weekday::Tue: day = Weekday::Mon; break;
+        case Weekday::Wed: day = Weekday::Tue; break;
+        case Weekday::Thu: day = Weekday::Wed; break;
+        case Weekday::Fri: day = Weekday::Thu; break;
+        case Weekday::Sat: day = Weekday::Fri; break;
+    }
+
+    return tmp;
+}
+
+// in studio2.cpp
+    cout << "-- loop start" << endl;
+    do{
+        cout << start << endl;
+        start--;
+    }while(start != today);
+
+```
+Result
+```
+Tuesday
+++ loop start
+Tuesday
+Wednesday
+Thursday
+Friday
+Saturday
+Sunday
+Monday
+-- loop start
+Tuesday
+Monday
+Sunday
+Saturday
+Friday
+Thursday
+Wednesday
+```
+
+## test4
+```cpp
+// in pressure.h
+#ifndef PRESSURE_H
+#define PRESSURE_H
+
+#include <iostream>
+using std::ostream;
+
+enum class Pressure {
+    lo, med, hi, pop
+};
+
+ostream &operator<<(ostream &os, const Pressure &p);
+
+ostream &operator<<(ostream &os, const Pressure &p) {
+    switch(p) {
+        case Pressure::lo: os << "Low"; break;
+        case Pressure::med: os << "Medium"; break;
+        case Pressure::hi: os << "High"; break;
+        case Pressure::pop: os << "Pop"; break;
+    }
+    return os;
+}
+
+
+#endif
+```
+
+
+Result
+```
+Tuesday
+Low
+```
+## test5
+
+```cpp
+// in pressure.h
+
+Pressure operator++(Pressure &p);
+
+Pressure operator++(Pressure &p) {
+    Pressure cur = p;
+    switch(p) {
+        case Pressure::lo: p = Pressure::med; break;
+        case Pressure::med: p = Pressure::hi; break;
+        case Pressure::hi: p = Pressure::pop; break;
+        case Pressure::pop: p = Pressure::pop; break;
+    }
+    return cur;
+} 
+
+// in studio2.cpp
+
+    cout << "++ loop start" << endl;
+    do{
+        cout << pre << endl;
+    } while(pre != ++pre);
+
+```
+
+
+Reuslt:
+```
+Tuesday
+Low
+++ loop start
+Low
+Medium
+High
+Pop
+```
+
