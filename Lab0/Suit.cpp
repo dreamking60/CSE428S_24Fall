@@ -1,7 +1,6 @@
 #include "Suit.h"
 
 Suit& operator++(Suit &s) {
-    Suit &cur = s;
     switch(s) {
         case(Suit::clubs): s = Suit::diamonds; break;
         case(Suit::diamonds): s = Suit::hearts; break;
@@ -9,7 +8,7 @@ Suit& operator++(Suit &s) {
         case(Suit::spades): s = Suit::undefined; break;
         case(Suit::undefined): break;
     }
-    return cur;
+    return s;
 }
 
 ostream &operator<<(ostream &os, const Suit &s) {

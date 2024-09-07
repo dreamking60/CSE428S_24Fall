@@ -5,7 +5,7 @@ using std::ostream;
 
 class Deck{
     public:
-        virtual void print(ostream &os);
+        virtual void print(ostream &os) const = 0;
 };
 
 
