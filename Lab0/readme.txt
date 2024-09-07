@@ -5,3 +5,7 @@ written by Zihan Chen
 A enum type Suit
 - Has 5 types: clubs, diamonds, hearts, spades and undefined.
 - With 2 operator: << and prefix ++
+
+A struct Card
+- Has 2 variables: R rank and S suit
+- With 1 operator: <<
