@@ -28,8 +28,8 @@ PinochleRank &operator++(PinochleRank &pr) {
 }
 
 PinochleDeck::PinochleDeck() {
-    for(PinochleRank i = PinochleRank::nine; i != PinochleRank::undefined; ++i) {
-        for(Suit j = Suit::clubs; j != Suit::undefined; ++j) {
+    for(PinochleRank i = PinochleRank::nine; i < PinochleRank::undefined; ++i) {
+        for(Suit j = Suit::clubs; j < Suit::undefined; ++j) {
             PinochleCard.push_back(Card<PinochleRank, Suit>{i,j});
             PinochleCard.push_back(Card<PinochleRank, Suit>{i,j});
         }
