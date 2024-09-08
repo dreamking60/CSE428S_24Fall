@@ -186,25 +186,26 @@ Low
 ```cpp
 // in pressure.h
 
-Pressure operator++(Pressure &p);
+Pressure &operator++(Pressure &p);
 
-Pressure operator++(Pressure &p) {
-    Pressure cur = p;
+Pressure &operator++(Pressure &p) {
     switch(p) {
         case Pressure::lo: p = Pressure::med; break;
         case Pressure::med: p = Pressure::hi; break;
         case Pressure::hi: p = Pressure::pop; break;
         case Pressure::pop: p = Pressure::pop; break;
     }
-    return cur;
+    return p;
 } 
 
 // in studio2.cpp
-
     cout << "++ loop start" << endl;
+    Pressure cur = pre;
     do{
         cout << pre << endl;
-    } while(pre != ++pre);
+        cur = pre;
+        ++pre;
+    } while(cur != pre);
 
 ```
 

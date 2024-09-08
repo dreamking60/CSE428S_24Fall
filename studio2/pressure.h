@@ -7,18 +7,17 @@ using std::ostream;
 enum class Pressure {
     lo, med, hi, pop
 };
-Pressure operator++(Pressure &p);
+Pressure &operator++(Pressure &p);
 ostream &operator<<(ostream &os, const Pressure &p);
 
-Pressure operator++(Pressure &p) {
-    Pressure cur = p;
+Pressure &operator++(Pressure &p) {
     switch(p) {
         case Pressure::lo: p = Pressure::med; break;
         case Pressure::med: p = Pressure::hi; break;
         case Pressure::hi: p = Pressure::pop; break;
         case Pressure::pop: p = Pressure::pop; break;
     }
-    return cur;
+    return p;
 } 
 
 ostream &operator<<(ostream &os, const Pressure &p) {

@@ -25,9 +25,12 @@ int main() {
     cout << pre << endl;
 
     cout << "++ loop start" << endl;
+    Pressure cur = pre;
     do{
         cout << pre << endl;
-    } while(pre != ++pre);
+        cur = pre;
+        ++pre;
+    } while(cur != pre);
 
     return 0;
 }
