@@ -59,3 +59,19 @@ int main() {
     return 0;
 }
 ```
+
+
+## Pointer & reference
+0x0070 7 i
+0x0078 4 j
+
+int *p = &i;
+0x007c 0x0070 p
+
+baz:
+p = &j
+0x007c 0x0078 p
+
+return *p
+
+
