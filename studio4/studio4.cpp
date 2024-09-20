@@ -1,37 +1,23 @@
-# Studio4
+#include <iostream>
+#include <set>
+#include <algorithm>
+#include <iterator>
+#include "pressure.h"
+#include "weekday.h"
+using std::cout;
+using std::endl;
+using std::set;
+using std::set_intersection;
+using std::inserter;
+using std::set_union;
 
-## Exercise1
-worked by Zihan Chen
-
-## Exercise2
-
-### Source Code
-I first cout a, and then cout ++a. In this way, I can compare a's cout with ++a's cout to check the privilege.
-
-If `++` has a higher privilege, then ++a execute first, so the print result will be med.
-If `<<` has a higher privilege, then cout execute first, so the print result will be lo, and then a add to med.
-```cpp
+int main() {
     Pressure a = Pressure::lo;
     cout << "-----Pressure << and ++ order comparing-----" << endl;
     cout << "First a: " << a << endl;
     cout << "First ++a: " << ++a << endl;
     cout << "Second ++a: " << ++a << endl;
-```
 
-### Result
-As the following result, we can find that ++ has a higher privilege than `<<`.
-```bash
-./studio4 
------Pressure << and ++ order comparing-----
-First a: Low
-First ++a: Medium
-Second ++a: High
-```
-
-## Exercise3
-
-### Code
-```cpp
     Pressure p1 = Pressure::med;
     Pressure p2 = Pressure::hi;
     Weekday w1 = Weekday::Mon;
@@ -53,24 +39,6 @@ Second ++a: High
         cout << "w1 < w2: No" << endl;
     }
 
-```
-
-### Result
-The operator < uses the number value of each enum to compare, here medium = 1 and high = 2, and comparing with 1 and 2.
-This is in the c library default.
-```
------Pressure operator < test-----
-p1: Medium, p2: High
-p1 < p2: Yes
------Weekday opeartor < test-----
-w1: Monday, w2: Thursday
-w1 < w2: Yes
-```
-
-## Exercise4
-
-### Code
-```cpp
     set<Weekday> work_Set = {Weekday::Mon, Weekday::Tue, Weekday::Wed, Weekday::Thu, Weekday::Fri};
     set<Weekday> rest_Set = {Weekday::Sat, Weekday::Sun, Weekday::Mon};
 
@@ -85,29 +53,7 @@ w1 < w2: Yes
         cout << x << endl;
     }
     cout << "-----Rest Set End-----" << endl;
-```
 
-### Result
-We can find that iterator will start from the lowest value to the highest value.
-```
------Work Set Start-----
-Monday
-Tuesday
-Wednesday
-Thursday
-Friday
------Work Set End-----
------Rest Set Start-----
-Sunday
-Monday
-Saturday
------Rest Set End-----
-```
-
-## Exercise5
-### Code
-Initialize a Intersection Set, use set_intersection function to find the intersection of two sets, and put the result in the Intersection Set.
-```cpp
     set<Weekday> IS_Set;
     set_intersection(work_Set.begin(), work_Set.end(), rest_Set.begin(), rest_Set.end(), inserter(IS_Set, IS_Set.end()));
     cout << "-----Set Intersection Start-----" << endl;
@@ -115,19 +61,7 @@ Initialize a Intersection Set, use set_intersection function to find the interse
         cout << x << endl;
     }
     cout << "-----Set Intersection End-----" << endl;
-```
-### Result
-```
------Set Intersection Start-----
-Monday
------Set Intersection End-----
-```
 
-## Exercise6
-Initialize a union set, use set_union function to find the union set of two sets, and put the result in the union set.
-
-### Code
-```cpp
     set<Weekday> Union_Set;
     set_union(work_Set.begin(), work_Set.end(), rest_Set.begin(), rest_Set.end(), inserter(Union_Set, Union_Set.end()));
     cout << "-----Set Union Start-----" << endl;
@@ -135,17 +69,6 @@ Initialize a union set, use set_union function to find the union set of two sets
         cout << x << endl;
     }    
     cout << "-----Set Union End-----" << endl;
-```
 
-### Result
-```
------Set Union Start-----
-Sunday
-Monday
-Tuesday
-Wednesday
-Thursday
-Friday
-Saturday
------Set Union End-----
-```
+    return 0;
+}
